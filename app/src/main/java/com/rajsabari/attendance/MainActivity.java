@@ -26,6 +26,7 @@ private DatabaseReference mdatabasereference;
             @Override
             public void onClick(View view) {
                 String mname=name.getText().toString();
+//                mdatabasereference.child(mname).setValue("Present");
                 mdatabasereference.child("PRESENT").child(mname).setValue("Present");
                 Toast.makeText(MainActivity.this, mname+"Present", Toast.LENGTH_SHORT).show();
 
@@ -35,6 +36,7 @@ private DatabaseReference mdatabasereference;
             @Override
             public void onClick(View view) {
                 String mname=name.getText().toString();
+//                mdatabasereference.child(mname).setValue("Absent");
                 mdatabasereference.child("ABSENT").child(mname).setValue("Absent");
                 Toast.makeText(MainActivity.this, mname+"Absent", Toast.LENGTH_SHORT).show();
 

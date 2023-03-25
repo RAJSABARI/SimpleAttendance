@@ -34,14 +34,23 @@ DatabaseReference ref;
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String check=snapshot.getKey();
                 String name=snapshot.getKey();
                 String status=snapshot.getValue().toString();
-                if (status.equals())
+                if (status.equalsIgnoreCase("Present")){
+                    arr1.add(name);
+                    arrayAdapter1.notifyDataSetChanged();
+                }
+                else{
+                    arr2.add(name);
+                    arrayAdapter2.notifyDataSetChanged();
+                }
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                arrayAdapter1.notifyDataSetChanged();
+                arrayAdapter2.notifyDataSetChanged();
             }
 
             @Override
@@ -58,7 +67,9 @@ DatabaseReference ref;
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        })
+        });
+        present.setAdapter(arrayAdapter1);
+        absent.setAdapter(arrayAdapter2);
 
     }
 }
